@@ -1,0 +1,5 @@
+curl -i -X POST \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"action":"Test action","data":"","result":"Test expected result"}' \
+  "https://trackspace.lhsystems.com/rest/raven/1.0/api/test/FSD-19935/step"
