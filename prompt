@@ -1,0 +1,15 @@
+Convert Skill/create-testcases.ps1 to Python as Skill/create_testcases.py. Keep the logic identical: duplicate check, step format, folder assignment, rollback, and the same default Excel file. Leave the .ps1 unchanged. Do not add any other features. Read the token from .env (TRACKSPACE_ACCESS_TOKEN), use openpyxl, and keep every cell value as exact text.
+
+Usage: python Skill/create_testcases.py --sheet "<sheet>" --rows 30-31 [--create]
+- Without --create it is a dry run: GET requests only, nothing is written to Trackspace.
+- With --create it creates the cases. It must print the same full preview first.
+
+Preview requirement (do not copy the .ps1 if it prints less than this): for EVERY requested row, print the full block: Title, Description, Assignee, Test Level, Test Case Type, all 4 steps (Action, Data, Expected Result) and the target folder. Print the row count only as a final line, never instead of the blocks. Also save the same preview to Data/_generated/preview_<sheet>_<first>-<last>.txt.
+
+Step 1 wording differs from the .ps1 (it now matches Skill/SKILL_v2.md). Use exactly:
+Action: Trigger JWT request with the given context payload
+Data: the row's Context value
+Expected Result: JWT token is displayed in the response for given payload
+Steps 2, 3 and 4 stay as in the .ps1. Define all step text as named constants at the top of the file.
+
+When done, list each rule from the .ps1 and where it lives in the .py, and show me the code that prints the preview. Do not run anything against Trackspace yet.
